@@ -71,7 +71,7 @@ class PostController extends Controller
      */
     public function edit(Post $post)
     {
-        //
+        return view('post.edit',['post' => $post]);
     }
 
     /**
@@ -83,7 +83,11 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $post)
     {
-        //
+        $post->update( $request->validate([
+            'title'=>['string','min:3'],
+            'content'=>['string','min:10']
+        ]));
+              return redirect('/posts/index');
     }
 
     /**
@@ -94,6 +98,8 @@ class PostController extends Controller
      */
     public function destroy(Post $post)
     {
-        //
+       
+        $post->delete();
+        return redirect('/posts/index'); 
     }
 }

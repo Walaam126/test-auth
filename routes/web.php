@@ -41,3 +41,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/posts/index', 'PostController@index')->name('posts.index');
 Route::get('/posts/create', 'PostController@create')->name('posts.create');
 Route::post('/posts/store', 'PostController@store')->name('posts.store');
+
+Route::get('/posts/{post}/edit', 'PostController@edit')->name('posts.edit');
+Route::put('/posts/{post}', 'PostController@update')->name('posts.update');
+
+Route::delete('/posts/{post}', 'PostController@destroy')->name('posts.destroy');

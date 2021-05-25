@@ -6,19 +6,81 @@
 
 @section('content')
     <h1>My Posts</h1>
-    <div class="row">
-        <div>
-            <ul>
-                @forelse ($posts as $post)
-                    <li>{{ $post->title }}</li>
-                    <p>{{ $post->content }}</p>
-                    <br />
-                @empty
 
-                    <p>No Posts</p>
+    <div class="card">
+        {{-- <div class="card-header border-0">
+            <h3 class="mb-0">My Postss</h3>
+        </div> --}}
+        <!-- Light table -->
+        <div class="table-responsive">
+            <table class="table align-items-center table-flush">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col" class="sort" data-sort="name">Title</th>
+                        <th scope="col" class="sort" data-sort="budget">Content</th>
+                        <th scope="col" class="sort" data-sort="status">Edit</th>
+                        {{-- <th scope="col">Users</th> --}}
+                        <th scope="col" class="sort" data-sort="completion">Delete</th>
+                    </tr>
+                </thead>
+                <tbody class="list">
+                    @forelse ($posts as $post)
+                        <tr>
+                            <th scope="row">
+                                <div class="media align-items-center">
+                                    <div class="media-body">
+                                        <span class="name mb-0 text-sm">{{ $post->title }}</span>
+                                    </div>
+                                </div>
+                            </th>
+                            <td class="budget">
 
-                @endforelse
-            </ul>
+                                {{ $post->content }}
+                            </td>
+                            <td>
+                                <a class="nav-link" href="{{ route('posts.edit', $post->id) }}">
+                                    <i class="fas fa-pen text-warning text-lg"></i>
+                                </a>
+                            </td>
+                            <td>
+                                <a class="nav-link" href="#" onclick='deletepost({{ $post->id }})'>
+                                    <i class="fas fa-trash text-danger text-lg"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        <form action="{{ route('posts.destroy', $post->id) }}" method="POST"
+                            id='deleteForm{{ $post->id }}'>
+                            @csrf
+                            @method('DELETE')
+                        </form>
+                    @empty
+                        {{-- <p>No Posts</p> --}}
+                        <tr>
+                            <td>
+                                <h4 class="text-left ml-2 mt-2">No posts yet...</h4>
+                            </td>
+                        </tr>
+                    @endforelse
+
+
+                </tbody>
+            </table>
         </div>
+        <!-- Card footer -->
     </div>
+
+
+
+    <form action="{{ route('home') }}" method="POST" id="edit">
+        @csrf
+    </form>
+    <script>
+        function deletepost(id) {
+
+            document.getElementById('deleteForm' + id).submit();
+        }
+
+    </script>
+
+
 @endsection
