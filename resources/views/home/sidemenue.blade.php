@@ -18,10 +18,18 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="examples/icons.html">
+                        <a class="nav-link" href="{{ route('posts.index') }}">
                             <i class="ni ni-planet text-orange"></i>
-                            <span class="nav-link-text">Icons</span>
+                            <span class="nav-link-text">My Posts</span>
                         </a>
+                        <ul>
+                            <li class="nav-item">
+                                <a class="nav-link" href="examples/map.html">
+                                    <i class="ni ni-planet text-orange"></i>
+                                    <span class="nav-link-text">Add Posts</span>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="examples/map.html">
@@ -31,7 +39,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('profile') }}">
-                            <i class="ni ni-single-02 text-yellow"></i <span class="nav-link-text">Profile</span>
+                            <i class="ni ni-single-02 text-yellow"></i> <span class="nav-link-text">Profile</span>
                         </a>
                     </li>
                     <li class="nav-item">

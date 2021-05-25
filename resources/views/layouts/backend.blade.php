@@ -30,7 +30,7 @@
         <!-- Header -->
         @include('home.header')
         <!-- Page content -->
-        <div class="container-fluid mt--6">
+        <div class="container-fluid mt-6">
             @yield('content')
             <!-- Footer -->
             @include('home.footer')
