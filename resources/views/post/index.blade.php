@@ -5,15 +5,20 @@
 @endsection
 
 @section('content')
+    <h1>My Posts</h1>
     <div class="row">
-        <h1>My Posts</h1>
-        @forelse ($posts as $post)
-            <li>{{ $post->title }}</li>
-        @empty
-            <div>
-                <p>No Posts</p>
-            </div>
-        @endforelse
+        <div>
+            <ul>
+                @forelse ($posts as $post)
+                    <li>{{ $post->title }}</li>
+                    <p>{{ $post->content }}</p>
+                    <br />
+                @empty
 
+                    <p>No Posts</p>
+
+                @endforelse
+            </ul>
+        </div>
     </div>
 @endsection

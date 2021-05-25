@@ -39,4 +39,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 //Posts Routes
 Route::get('/posts/index', 'PostController@index')->name('posts.index');
-Route::get('/posts/create', 'PostController@index')->name('posts.create');
+Route::get('/posts/create', 'PostController@create')->name('posts.create');
+Route::post('/posts/store', 'PostController@store')->name('posts.store');

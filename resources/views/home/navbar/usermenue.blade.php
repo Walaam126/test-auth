@@ -34,8 +34,18 @@
             <div class="dropdown-divider"></div>
             <a href="#!" class="dropdown-item">
                 <i class="ni ni-user-run"></i>
-                <span>Logout</span>
+                <span onclick="logout()">Logout</span>
             </a>
         </div>
     </li>
 </ul>
+<form action="{{ route('logout') }}" method="POST" id="logout">
+    @csrf
+</form>
+
+<script>
+    function logout() {
+        document.getElementById('logout').submit();
+    }
+
+</script>

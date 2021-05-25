@@ -24,7 +24,7 @@
                         </a>
                         <ul>
                             <li class="nav-item">
-                                <a class="nav-link" href="examples/map.html">
+                                <a class="nav-link" href="{{ route('posts.create') }}">
                                     <i class="ni ni-planet text-orange"></i>
                                     <span class="nav-link-text">Add Posts</span>
                                 </a>
