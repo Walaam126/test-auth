@@ -18,6 +18,8 @@
     <!-- Page plugins -->
     <!-- Argon CSS -->
     <link rel="stylesheet" href="{{ asset('Argon/assets/css/argon.css?v=1.2.0') }}" type="text/css">
+
+    <script src="sweetalert2/dist/sweetalert2.all.min.js"></script>
 </head>
 
 <body>
@@ -48,6 +50,8 @@
     <script src="{{ asset('Argon/assets/vendor/chart.js/dist/Chart.extension.js') }}"></script>
     <!-- Argon JS -->
     <script src="{{ asset('Argon/assets/js/argon.js?v=1.2.0') }}"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </body>
 
 </html>

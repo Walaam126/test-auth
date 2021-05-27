@@ -43,7 +43,7 @@
                                 </a>
                             </td>
                             <td>
-                                <a class="nav-link" href="#" onclick='deletepost({{ $post->id }})'>
+                                <a class="nav-link" href="#" onclick='confirmDelete({{ $post->id }})'>
                                     <i class="fas fa-trash text-danger text-lg"></i>
                                 </a>
                             </td>
@@ -71,13 +71,28 @@
 
 
 
-    <form action="{{ route('home') }}" method="POST" id="edit">
-        @csrf
-    </form>
-    <script>
-        function deletepost(id) {
 
-            document.getElementById('deleteForm' + id).submit();
+    <script>
+        function confirmDelete(id) {
+
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('deleteForm' + id).submit();
+                    Swal.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                    )
+                }
+            })
         }
 
     </script>

@@ -46,3 +46,8 @@ Route::get('/posts/{post}/edit', 'PostController@edit')->name('posts.edit');
 Route::put('/posts/{post}', 'PostController@update')->name('posts.update');
 
 Route::delete('/posts/{post}', 'PostController@destroy')->name('posts.destroy');
+
+//Books Routs
+Route::get('/books/index', 'BookController@index')->name('books.index');
+Route::post('/books/store', 'BookController@store')->name('books.store');
+Route::delete('/books/{book}', 'BookController@destroy')->name('books.destroy');

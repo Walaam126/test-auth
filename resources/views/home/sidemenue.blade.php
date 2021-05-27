@@ -32,9 +32,9 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="examples/map.html">
-                            <i class="ni ni-pin-3 text-primary"></i>
-                            <span class="nav-link-text">Google</span>
+                        <a class="nav-link" href="{{ route('books.index') }}">
+                            <i class="ni ni-books text-primary"></i>
+                            <span class="nav-link-text">My Books</span>
                         </a>
                     </li>
                     <li class="nav-item">

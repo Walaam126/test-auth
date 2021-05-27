@@ -1,0 +1,57 @@
+    {{-- add new modal --}}
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">New Book</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <form action="{{ route('books.store') }}" method="POST" id="addBookForm"
+                        enctype="multipart/form-data">
+                        @csrf
+                        <label for="title">Title</label>
+                        <input type="text" class="form-control @error('title') is-invalid @enderror"
+                            value="{{ old('title') }}" name="title" id="title" required>
+                        @error('title')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
+
+                        <label class="mt-4" for="genre">Genre</label>
+                        <input type="text" class="form-control @error('genre') is-invalid @enderror"
+                            value="{{ old('genre') }}" name="genre" id="genre" required>
+                        @error('genre')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
+
+                        <label class="mt-4" for="image">Image</label>
+                        <input class="form-control @error('image') is-invalid @enderror" type="file" name="image"
+                            id="image">
+                        @error('image')
+                            <div class="text-danger">{{ $message }}</div>
+                        @enderror
+                        <br />
+                        {{-- <button type="submit" class="btn btn-primary float-right">Submit</button> --}}
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" onclick="addBook()">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        function addBook() {
+
+            var res = document.getElementById('addBookForm').submit();
+            console.log(res);
+        }
+
+    </script>
