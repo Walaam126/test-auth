@@ -39,76 +39,51 @@
 <body data-spy="scroll" data-target=".fixed-top">
 
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg fixed-top navbar-dark">
-        <div class="container">
+    <div>
+        <nav class="navbar navbar-expand-lg fixed-top pb-4" style="background: #3b363c; height:50px;">
+            <div class="container pb-2">
 
-            <!-- Text Logo - Use this if you don't have a graphic logo -->
-            <a class="navbar-brand logo-text page-scroll" href="#">My Blog</a>
+                <!-- Text Logo - Use this if you don't have a graphic logo -->
+                <a class="navbar-brand logo-text page-scroll" href="{{ url('/') }}">My Blog</a>
 
-            <!-- Image Logo -->
-            {{-- <a class="navbar-brand logo-image" href="index.html"><img
+                <!-- Image Logo -->
+                {{-- <a class="navbar-brand logo-image" href="index.html"><img
                     src="{{ asset('Zenith/assets/images/logo.svg') }}" alt="alternative"></a> --}}
 
-            <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link page-scroll" href="#services">SERVICES <span
-                                class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link page-scroll" href="#details">DETAILS</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link page-scroll" href="#contact">CONTACT</a>
-                    </li>
-                    @if (Route::has('login'))
+                <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+                    <ul class="navbar-nav ml-auto">
+                        @if (Route::has('login'))
 
-                        @auth
+                            @auth
 
-                            <li class="nav-item">
-                                <a class="nav-link page-scroll" href="{{ url('/home') }}">HOME</a>
-                            </li>
-                        @else
-                            <li class="nav-item">
-                                <a class="nav-link page-scroll" href="{{ route('login') }}">LOGIN</a>
-                            </li>
-                            @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link page-scroll" href="{{ route('register') }}">SIGN UP</a>
+                                    <a class="nav-link page-scroll text-white" href="{{ url('/home') }}">HOME</a>
                                 </li>
-                            @endif
-                        @endauth
+                            @else
+                                <li class="nav-item">
+                                    <a class="nav-link page-scroll text-white" href="{{ route('login') }}">LOGIN</a>
+                                </li>
+                                @if (Route::has('register'))
+                                    <li class="nav-item">
+                                        <a class="nav-link page-scroll text-white" href="{{ route('register') }}">SIGN
+                                            UP</a>
+                                    </li>
+                                @endif
+                            @endauth
 
-                    @endif
-                </ul>
-            </div> <!-- end of navbar-collapse -->
-        </div> <!-- end of container -->
-    </nav> <!-- end of navbar -->
-    <!-- end of navigation -->
-
-    <!-- Header -->
-    @include('landing.header')
-    <!-- end of header -->
-
-    <!-- Services -->
-    @include('landing.services')
-    <!-- end of services -->
-
-    <!-- Details -->
-    @include('landing.details')
-    <!-- end of details  -->
-
-    <!-- Contact -->
-    @include('landing.contact')
-    <!-- end of contact -->
-
-    <!-- Copyright -->
-    @include('layouts.copyright')
-    <!-- end of copyright -->
-
+                        @endif
+                    </ul>
+                </div> <!-- end of navbar-collapse -->
+            </div> <!-- end of container -->
+        </nav> <!-- end of navbar -->
+        <!-- end of navigation -->
+    </div><br><br>
+    <main class="py-4">
+        @yield('content')
+    </main>
     <!-- Scripts -->
     <script src="{{ asset('Zenith/assets/js/jquery.min.js') }}"></script>
     <!-- jQuery for Bootstrap's JavaScript plugins -->
