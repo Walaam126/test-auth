@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\Book;
 use App\Models\Post;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -40,5 +41,10 @@ class User extends Authenticatable
 
     public function posts(){
         return $this->hasMany(Post::class);
+    }
+
+    public function books()
+    {
+        return $this->HasMany(Book::class);
     }
 }

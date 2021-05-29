@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Book;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
-class BookController extends Controller
+class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,14 +14,9 @@ class BookController extends Controller
      */
     public function index()
     {
-    return view('book.index',[
-        'categories' => Category::all(),
-        'books' => auth()->user()->books
-    ]);
-
-    //    return view('book.index',
-    // ['categories' => Category::all(),
-    // 'books'=>Book::where('user_id',auth()->id())->get()]);
+        return view('category.index',[
+            'categories' => Category::all()
+        ]);
     }
 
     /**
@@ -43,28 +37,7 @@ class BookController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'title'=>['string','min:3'],
-            'genre '=>['string','min:3'],
-            'image' => 'mimes:jpeg,bmp,png'
-        ]);
-
-
-      $newBook=Book::create([
-           'title'=>$request->title,
-           'genre'=>$request->genre,
-           'category_id'=>$request->category_id,
-           'user_id'=>auth()->id(),
-       ]);
-     
-
-       if($request->image)  
-       {          
-           $request->image->store('images', 'public');            
-           $newBook->update(['image' => $request->image->hashName()]);
-       }
-
-       return redirect('/books/index');
+        //
     }
 
     /**
@@ -75,12 +48,7 @@ class BookController extends Controller
      */
     public function show($id)
     {
-        $book = Book::find($id);
-        return response()->json([
-            'id' => $book->id,
-            'title' => $book->title,
-            'category_id' => $book->category_id,            
-        ]);
+        //
     }
 
     /**
@@ -103,7 +71,7 @@ class BookController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request->all());
+        //
     }
 
     /**
@@ -112,9 +80,8 @@ class BookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Book $book)
+    public function destroy($id)
     {
-        $book->delete();
-        return redirect('/books/index'); 
+        //
     }
 }

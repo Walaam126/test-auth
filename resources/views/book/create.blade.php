@@ -1,6 +1,6 @@
     {{-- add new modal --}}
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalTitle"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -16,17 +16,22 @@
                         @csrf
                         <label for="title">Title</label>
                         <input type="text" class="form-control @error('title') is-invalid @enderror"
-                            value="{{ old('title') }}" name="title" id="title" required>
+                            value="{{ old('title') }}" name="title" id="ctitle" required>
                         @error('title')
                             <div class="text-danger">{{ $message }}</div>
                         @enderror
 
-                        <label class="mt-4" for="genre">Genre</label>
-                        <input type="text" class="form-control @error('genre') is-invalid @enderror"
-                            value="{{ old('genre') }}" name="genre" id="genre" required>
-                        @error('genre')
-                            <div class="text-danger">{{ $message }}</div>
-                        @enderror
+
+                        <div class="form-group mt-4">
+                            <label for="category_id">Category</label>
+                            <select class="form-control" name="category_id" id="ccategory_id">
+                                <option value="" selected disabled>Please select</option>
+                                @foreach ($categories as $cat)
+                                    <option value="{{ $cat->id }}">{{ $cat->name }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
 
                         <label class="mt-4" for="image">Image</label>
                         <input class="form-control @error('image') is-invalid @enderror" type="file" name="image"
@@ -36,6 +41,7 @@
                         @enderror
                         <br />
                         {{-- <button type="submit" class="btn btn-primary float-right">Submit</button> --}}
+                        <input type="hidden" id="genre" name="genre" value="NA">
                     </form>
                 </div>
                 <div class="modal-footer">

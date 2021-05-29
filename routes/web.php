@@ -51,3 +51,9 @@ Route::delete('/posts/{post}', 'PostController@destroy')->name('posts.destroy');
 Route::get('/books/index', 'BookController@index')->name('books.index');
 Route::post('/books/store', 'BookController@store')->name('books.store');
 Route::delete('/books/{book}', 'BookController@destroy')->name('books.destroy');
+Route::get('/books/show/{id}', 'BookController@show')->name('books.show');
+Route::put('/books/update/{id}', 'BookController@update')->name('books.update');
+
+
+//Categories route
+Route::resource('categories', 'CategoryController');

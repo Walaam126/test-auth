@@ -11,7 +11,7 @@
             </span>
         </div>
         <div class="justify-content-end">
-            <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Add new
+            <button class="btn btn-primary" data-toggle="modal" data-target="#addModal">Add new
                 Book</button>
         </div>
     </div>
@@ -23,12 +23,13 @@
                         height="200">
                     <div class="card-body">
                         <h4 class="card-title">{{ $book->title }}</h4>
-                        <p class="card-text">{{ $book->genre }}</p>
+                        {{-- <p class="card-text">{{ $book->genre }}</p> --}}
+                        <p class="card-text">{{ $book->category ? $book->category->name : 'NA' }}</p>
                     </div>
 
                     <div class="d-flex justify-content-center mb-2">
-                        <a class="mr-3" href="#" data-toggle="modal" data-target="#editPostModal"><i
-                                class="fas fa-pen"></i></a>
+                        <a class="mr-3" href="#" onclick="fillData('{{ $book->id }}')" data-toggle="modal"
+                            data-target="#editBookModal"><i class="fas fa-pen"></i></a>
                         <a class="mr-3" href="#" onclick='confirmDelete({{ $book->id }})'><i
                                 class="text-danger fas fa-trash ml-1"></i></a>
                     </div>
@@ -48,6 +49,7 @@
     </div>
 
     @include('book.create')
+    @include('book.update')
 
 
     <script>
@@ -71,6 +73,15 @@
                     )
                 }
             })
+        }
+
+        function fillData(id) {
+            $.get("{{ url('books/show') }}/" + id, function(data) {
+
+                document.getElementById('title').value = data.title;
+                document.getElementById('category_id').value = data.category_id;
+                document.getElementById('updateBookForm').action = '/books/update/' + data.id;
+            });
         }
 
     </script>

@@ -38,14 +38,14 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('profile') }}">
-                            <i class="ni ni-single-02 text-yellow"></i> <span class="nav-link-text">Profile</span>
+                        <a class="nav-link" href="{{ route('categories.index') }}">
+                            <i class="ni ni-bullet-list-67 text-default"></i>
+                            <span class="nav-link-text">Categories</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="examples/tables.html">
-                            <i class="ni ni-bullet-list-67 text-default"></i>
-                            <span class="nav-link-text">Tables</span>
+                        <a class="nav-link" href="{{ url('profile') }}">
+                            <i class="ni ni-single-02 text-yellow"></i> <span class="nav-link-text">Profile</span>
                         </a>
                     </li>
                     <li class="nav-item">
