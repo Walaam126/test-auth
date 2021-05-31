@@ -44,11 +44,6 @@
                                 </a>
                             </td>
                         </tr>
-                        <form action="{{ route('categories.destroy', $cat->id) }}" method="POST"
-                            id='deleteForm{{ $cat->id }}'>
-                            @csrf
-                            @method('DELETE')
-                        </form>
                     @empty
                         <tr>
                             <td>
@@ -56,7 +51,11 @@
                             </td>
                         </tr>
                     @endforelse
-
+                    <form action="{{ route('categories.destroy', 0) }}" method="POST" id="deleteForm">
+                        @csrf
+                        <input type="hidden" name="id" id="deletedID">
+                        @method('delete')
+                    </form>
 
                 </tbody>
             </table>
@@ -80,7 +79,8 @@
                 confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    document.getElementById('deleteForm' + id).submit();
+                    document.getElementById('deletedID').value = id;
+                    document.getElementById('deleteForm').submit();
                     Swal.fire(
                         'Deleted!',
                         'Your file has been deleted.',

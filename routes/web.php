@@ -57,3 +57,6 @@ Route::put('/books/update/{id}', 'BookController@update')->name('books.update');
 
 //Categories route
 Route::resource('categories', 'CategoryController');
+
+
+Route::put('/user/update/{id}', 'UserController@update')->name('user.update');

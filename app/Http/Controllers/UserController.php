@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
+use App\User;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('category.index',[
-            'categories' => Category::all()
-        ]);
+        //
     }
 
     /**
@@ -71,7 +69,20 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);   
+       $user->update([
+            'name' => $request->name,
+            'email' => $request->email,           
+        ]);
+
+
+        if($request->image)  
+        {          
+            $request->image->store('images', 'public');            
+            $user->update(['image' => $request->image->hashName()]);
+        }
+
+        return redirect('/profile'); 
     }
 
     /**
@@ -80,9 +91,8 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-        Category::find($request->id)->delete();
-        return redirect()->route('categories.index');
+        //
     }
 }

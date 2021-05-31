@@ -103,7 +103,19 @@ class BookController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request->all());
+        $book = Book::find($request->id);        
+        $book->update([
+            'title' => $request->title,
+            'category_id' => $request->category_id,           
+        ]);
+        
+        if($request->image)  
+        {          
+            $request->image->store('images', 'public');            
+            $book->update(['image' => $request->image->hashName()]);
+        }
+
+        return redirect('/books/index'); 
     }
 
     /**
